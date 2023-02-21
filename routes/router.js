@@ -9,7 +9,10 @@ app.get('/health',(req,res)=>{
 })
 
 app.get('/',(req,res)=>{
-    res.render('show')
+    return res.render('show');
+})
+app.get('/playground',(req,res)=>{
+    return res.render('editor');
 })
 app.post('/ccompile',compileController.CompileC);
 

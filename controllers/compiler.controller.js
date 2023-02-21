@@ -5,16 +5,13 @@ compiler.init(options);
 
 var envData = { OS: "windows", cmd: "g++" ,options: {timeout:1000 }};
 
-exports.CompileC = (req,res)=>{
+exports.CompileC = async (req,res)=>{
     const{code,input} = req.body;
-    compiler.compileCPPWithInput(envData , code , input , function (data) {
-        console.log(data);
-        // console.log();
-        // console.log();
-        compiler.flush(function(){
-            console.log('All temporary files flushed !'); 
+    await new Promise((resolve,reject)=>{
+        compiler.compileCPPWithInput(envData , code , input , function (data) {
+            console.log(data);
+            resolve()
         });
-    });
-    
-    // return res.send(1)
+    })
+    return res.send("1")
 }
