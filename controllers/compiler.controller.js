@@ -5,10 +5,10 @@ compiler.init(options);
 
 var envData = { OS: "windows", cmd: "g++" ,options: {timeout:1000 }};
 
-exports.CompileC = async (req,res)=>{
+exports.CompileC_Cpp = async (req,res)=>{
     const{code,input} = req.body;
     await new Promise((resolve,reject)=>{
-        compiler.compileCPPWithInput(envData , code , input , function (data) {
+        compiler.compileCPPWithInput(envData , code , input ,(data)=>{
             console.log(data);
             resolve()
         });
