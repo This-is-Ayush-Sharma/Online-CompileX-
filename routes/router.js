@@ -19,11 +19,12 @@ app.get('/playground',(req,res)=>{
 
 app.post('/ccompile',compileController.HandlerC_Cpp);
 app.post('/javacompile',compileController.HandlerJava);
-
+app.post('/pythoncompile',compileController.HandlerPython);
 
 
 // configure Rest api
 app.post('/compile/c-cpp',compilerRestController.HandlerC_Cpp);
 app.post('/compile/java',compilerRestController.HandleJava);
+app.post('/compile/python',compilerRestController.HandlePython);
 
 module.exports = app;
