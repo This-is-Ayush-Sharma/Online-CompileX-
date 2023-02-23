@@ -17,11 +17,13 @@ app.get('/playground',(req,res)=>{
     return res.render('editor');
 })
 
-app.post('/ccompile',compileController.CompileC_Cpp);
+app.post('/ccompile',compileController.HandlerC_Cpp);
+app.post('/javacompile',compileController.HandlerJava);
 
 
 
 // configure Rest api
-app.post('/compile/c-cpp',compilerRestController.CompileC_Cpp);
+app.post('/compile/c-cpp',compilerRestController.HandlerC_Cpp);
+app.post('/compile/java',compilerRestController.HandleJava);
 
 module.exports = app;

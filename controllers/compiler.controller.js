@@ -1,17 +1,14 @@
 // this file deals with code compilation
-var compiler = require('compilex');
-var options = { stats: true };
-compiler.init(options);
+const { CompileC_Cpp } = require('../utils/c-cpp.compiler');
+const { CompileJava } = require('../utils/java.compiler');
+exports.HandlerC_Cpp = async (req,res)=>{
+    const {code,input} = req.body;
+    var output = await CompileC_Cpp(code, input);
+    return res.send(output);
+}
 
-var envData = { OS: "windows", cmd: "g++" ,options: {timeout:1000 }};
-
-exports.CompileC_Cpp = async (req,res)=>{
-    const{code,input} = req.body;
-    await new Promise((resolve,reject)=>{
-        compiler.compileCPPWithInput(envData , code , input ,(data)=>{
-            console.log(data);
-            resolve()
-        });
-    })
-    return res.send("1")
+exports.HandlerJava = async (req,res)=>{
+    const {code,input} = req.body;
+    var output = await CompileJava(code, input);
+    return res.send(output);
 }
