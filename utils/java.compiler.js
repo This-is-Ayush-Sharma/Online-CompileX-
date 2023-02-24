@@ -2,7 +2,10 @@ var compiler = require('compilex');
 var options = { stats: true };
 compiler.init(options);
 
-var envData = { OS: "windows", options: { timeout: 1000 } };
+var envData = {
+    OS: process.platform === 'win32' ? "windows" : "linux",
+    options: { timeout: 1000 }
+};
 
 exports.CompileJava = async (code, input) => {
     var output;

@@ -3,7 +3,7 @@ var options = { stats: true };
 compiler.init(options);
 
 var envData = {
-    OS: "windows",
+    OS: process.platform === 'win32' ? "windows" : "linux",
     cmd: "g++",
     options: { timeout: 1000 }
 };
