@@ -4,6 +4,7 @@ const app = express();
 //controller
 const compileController = require('../controllers/compiler.controller');
 const compilerRestController = require('../controllers/compiler.rest.controller');
+const statsController = require('../controllers/stats.controller');
 
 app.get('/health',(req,res)=>{
     res.send("The server is up and running");
@@ -26,5 +27,10 @@ app.post('/pythoncompile',compileController.HandlerPython);
 app.post('/compile/c-cpp',compilerRestController.HandlerC_Cpp);
 app.post('/compile/java',compilerRestController.HandleJava);
 app.post('/compile/python',compilerRestController.HandlePython);
+
+
+
+//stats
+app.get('/stats',statsController.stats);
 
 module.exports = app;
